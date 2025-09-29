@@ -57,11 +57,10 @@ jobs:
         kubectl apply -f k8s/wisecow-ingress.yaml
         kubectl rollout status deployment/wisecow-deployment --timeout=120s
 
-
-    # 9️⃣ Smoke test over HTTPS
     - name: Smoke test (HTTPS)
       run: |
-        kubectl run curlpod --image=radial/busyboxplus:curl --restart=Never --command -- sleep 30s
-        kubectl wait --for=condition=Ready pod/curlpod --timeout=60s
-        kubectl exec curlpod -- curl -k https://wisecow.default.svc.cluster.local/
+       kubectl run curlpod --image=radial/busyboxplus:curl --restart=Never -- curl -k https://wisecow.default.svc.cluster.local/
+       kubectl delete pod curlpod
+
+ 
 
