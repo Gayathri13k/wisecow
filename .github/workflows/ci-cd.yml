@@ -29,9 +29,9 @@ jobs:
 
     # 4️⃣ Set up Kind (Kubernetes in CI)
     - name: Set up Kind
-      uses: engineerd/setup-kind@v0.11.0
+      uses: engineerd/setup-kind@v0.6.2
       with:
-        version: v0.21.0
+        version: v0.24.0
 
     # 5️⃣ Load image into Kind
     - name: Load image into Kind
