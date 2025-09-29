@@ -62,4 +62,6 @@ jobs:
     - name: Smoke test (HTTPS)
       run: |
         kubectl run curlpod --image=radial/busyboxplus:curl --restart=Never --command -- sleep 30s
+        kubectl wait --for=condition=Ready pod/curlpod --timeout=60s
         kubectl exec curlpod -- curl -k https://wisecow.default.svc.cluster.local/
+
